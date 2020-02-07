@@ -1,0 +1,6 @@
+%Factorial
+clc;            % clear screan
+clear all;      % delete all global values
+function [out]=fact(value);
+
+end;
