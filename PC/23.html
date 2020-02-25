@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- JSN_Epic_FREE 3.6 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs-cz" lang="cs-cz" dir="ltr">
+<head>
+  <base href="http://anca.utko.feec.vutbr.cz/vyuka/bdak/23" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="robots" content="index, follow" />
+  <meta name="google-site-verification" content="XoBsZ7n64myalV-4Td9p-wbYfxQR8BRlxFKgcdK7Z4E" />
+  <meta name="keywords" content="Asterisk,VoIP,VUTBR,VoIP,PBX,MTIS,BDAK,MVDP,návody,cvičení,laboratoře,labiny,přednášky,utko,feec,vutbr,Anička,anča,anca,alcatel,siemens,2N,ateus,omega,digium,sangoma,&quot;datová komunikace&quot;,telekomunikačni,informační,služby,bezpečnost,hlas,data,VoTEX,&quot;Voip &amp; Telephone eXchange research group&quot;,research, group, telephone, exchange,pbx" />
+  <meta name="title" content="Huffmanův kód - zadání a řešení" />
+  <meta name="author" content="Administrator" />
+  <meta name="description" content="Asterisk,VoIP,PBX,MTIS,BDAK,MVDP,VOTEX" />
+  <meta name="generator" content="Joomla! 1.5 - Open Source Content Management" />
+  <title>Huffmanův kód - zadání a řešení</title>
+  <link href="/templates/jsn_epic_free/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+  <link rel="stylesheet" href="/media/system/css/modal.css" type="text/css" />
+  <link rel="stylesheet" href="/templates/system/css/system.css" type="text/css" />
+  <link rel="stylesheet" href="/templates/system/css/general.css" type="text/css" />
+  <link rel="stylesheet" href="/templates/jsn_epic_free/css/template.css" type="text/css" />
+  <link rel="stylesheet" href="/templates/jsn_epic_free/css/jsn_jcore.css" type="text/css" />
+  <link rel="stylesheet" href="/templates/jsn_epic_free/css/template_blue.css" type="text/css" />
+  <script type="text/javascript" src="/plugins/system/mtupgrade/mootools.js"></script>
+  <script type="text/javascript" src="/media/system/js/caption.js"></script>
+  <script type="text/javascript" src="/media/system/js/modal.js"></script>
+  <script type="text/javascript">
+window.addEvent("domready", function() {
+	SqueezeBox.initialize({});
+	$$("a.modal").each(function(el) {
+		el.addEvent("click", function(e) {
+			new Event(e).stop();
+			SqueezeBox.fromElement(el);
+		});
+	});
+});
+  </script>
+
+
+<!--[if IE 6]>
+<link href="/templates/jsn_epic_free/css/jsn_fixie6.css" rel="stylesheet" type="text/css" />
+<script src="/templates/jsn_epic_free/js/jsn_fixpng.js"></script>
+<script>
+  DD_belatedPNG.fix('#mod_search_searchword, #jsn-pbreadcrumbs, span.breadcrumbs a, #base-mainmenu ul, #base-mainmenu span,  ul.menu-treemenu a, .author, .createdate, ul.list-arrow-red li, ul.list-arrow-blue li, ul.list-arrow-green li, .jsn-top, .jsn-top_inner, .jsn-middle, .jsn-middle_inner, .jsn-bottom, .jsn-bottom_inner');
+</script>
+<![endif]-->
+
+<!--[if IE 7]>
+<link href="/templates/jsn_epic_free/css/jsn_fixie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+
+<style type="text/css">
+		#jsn-page {
+			width: 960px;
+		}
+		
+	#jsn-leftsidecontent {
+		float: left;
+		width: 23%;
+		left: -100%;
+	}
+	#jsn-maincontent {
+		float: left;
+		width: 100%;
+		left: 0;
+	}
+	#jsn-rightsidecontent {
+		float: right;
+		width: 23%;
+	}
+	
+	#jsn-pinnerleft {
+		float: left;
+		width: 25%;
+		left: -100%;
+	}
+	#jsn-pcentercol {
+		float: left;
+		width: 100%;
+		left: 0;
+	}
+	#jsn-pinnerright {
+		float: right;
+		width: 25%;
+	}
+	</style>
+<!-- JS Includes -->
+<script type="text/javascript"><!--
+var templatePath = "/templates/jsn_epic_free";
+var enableRTL = false;
+var rspAlignment = "middle";
+var lspAlignment = "middle";
+--></script>
+<script type="text/javascript" src="/templates/jsn_epic_free/js/jsn_utils.js"></script>
+<script type="text/javascript" src="/templates/jsn_epic_free/js/jsn_template.js"></script><script type="text/javascript" src="http://anca.utko.feec.vutbr.cz/components/com_imageshow/jscript/swfobject.js"></script>
+<script type="text/javascript" src="http://anca.utko.feec.vutbr.cz/administrator/components/com_imageshow/assets/js/jsn_ext_ultils.js"></script>
+<script type="text/javascript" src="http://anca.utko.feec.vutbr.cz/administrator/components/com_imageshow/assets/js/imageshow.js"></script>
+
+<link rel="stylesheet" href="http://anca.utko.feec.vutbr.cz/components/com_imageshow/assets/css/style.css" type="text/css" />
+
+<script type='text/javascript'>
+window.onload = function()
+					{
+						JSNImageShow.alternativeContent();	
+					};
+</script>
+</head>
+<body id="jsn-master" class="jsn-textstyle-business jsn-textsize-medium jsn-color-blue jsn-direction-ltr">
+<div id="jsn-page">
+			<div id="jsn-header">
+		<div id="jsn-logo">
+								<a href="/index.php" title="Anička">					<img src="/templates/jsn_epic_free/images/blue/logo.png" alt="Anička" />
+				</a>					</div>
+			</div>
+	<div id="jsn-body">
+					<div id="jsn-menu">
+									<div id="jsn-pmainmenu">
+							<div class="module jsn-modulecontainer">
+				<div class="jsn-modulecontent clearafter">
+<ul class="menu" id="base-mainmenu">
+	<li class="parent item17 order1 first">
+		<a href="http://anca.utko.feec.vutbr.cz/">
+			<span>Home</span>
+		</a>
+		<ul>
+			<li class="item36 order1 first">
+				<a href="/homehorni/o-serveru">
+					<span>O serveru</span>
+				</a>
+			</li>
+			<li class="item37 order2 last">
+				<a href="/homehorni/o-nas">
+					<span>O nás</span>
+				</a>
+			</li>
+		</ul>
+	</li>
+	<li class="item49 order2">
+		<a href="/produkty">
+			<span>Produkty</span>
+		</a>
+	</li>
+	<li class="parent active item16 order3">
+		<a href="/vyuka">
+			<span>Výuka</span>
+		</a>
+		<ul>
+			<li class="active item30 order1 first current">
+				<a href="/vyuka/bdak" class="current">
+					<span>BDAK</span>
+				</a>
+			</li>
+			<li class="item29 order2">
+				<a href="/vyuka/mtis">
+					<span>MTIS</span>
+				</a>
+			</li>
+			<li class="item48 order3">
+				<a href="/vyuka/kdak">
+					<span>KDAK</span>
+				</a>
+			</li>
+			<li class="item47 order4">
+				<a href="/vyuka/ltis">
+					<span>LTIS</span>
+				</a>
+			</li>
+			<li class="item39 order5 last">
+				<a href="https://www.vutbr.cz/elearning/" target="_blank">
+					<span>E-learning</span>
+				</a>
+			</li>
+		</ul>
+	</li>
+	<li class="item12 order4">
+		<a href="http://www.feec.vutbr.cz" target="_blank">
+			<span>FEKT VUT</span>
+		</a>
+	</li>
+	<li class="item11 order5">
+		<a href="http://www.vutbr.cz" target="_blank">
+			<span>VUT Brno</span>
+		</a>
+	</li>
+	<li class="item27 order6 last">
+		<a href="/login">
+			<span>Login</span>
+		</a>
+	</li>
+</ul></div>
+	</div>
+
+					</div>
+												<div class="clearbreak"></div>
+			</div>
+							<div id="jsn-featured">
+					<div id="jsn-ppromo">
+							<div class="module jsn-modulecontainer">
+		<div class="jsn-top"><div class="jsn-top_inner"></div></div>
+		<div class="jsn-middle">
+			<div class="jsn-middle_inner">
+								<div class="jsn-modulecontent clearafter"><!-- JSN ImageShow FREE 2.5 --><div class="jsnis-container"><div class="jsnis-flash-object"><object height="160" width="100%" class="jsnis-gallery" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" id="jsn-imageshow-hNAEi">
+				<param name="bgcolor" value="#ffffff"/>
+				<param name="menu" value="false"/>
+				<param name="wmode" value="opaque"/>
+				<param name="allowFullScreen" value="true"/>
+				<param name="allowScriptAccess" value="sameDomain" />
+				<param name="movie" value="http://anca.utko.feec.vutbr.cz/components/com_imageshow/Gallery.swf"/>
+				<param name="flashvars" value="baseurl=http://anca.utko.feec.vutbr.cz/components/com_imageshow/&amp;showcase=http://anca.utko.feec.vutbr.cz/index.php?option=com_imageshow%26view=show%26showcase_id=1%26format=showcase&amp;showlist=http://anca.utko.feec.vutbr.cz/index.php?option=com_imageshow%26view=show%26showlist_id=1%26format=showlist&amp;language="/><embed src="http://anca.utko.feec.vutbr.cz/components/com_imageshow/Gallery.swf" menu="false" bgcolor="#ffffff" width="100%" height="160" name="jsn-imageshow-hNAEi" align="middle" allowScriptAccess="sameDomain" allowFullScreen="true" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer" wmode="opaque" flashvars="baseurl=http://anca.utko.feec.vutbr.cz/components/com_imageshow/&amp;showcase=http://anca.utko.feec.vutbr.cz/index.php?option=com_imageshow%26view=show%26showcase_id=1%26format=showcase&amp;showlist=http://anca.utko.feec.vutbr.cz/index.php?option=com_imageshow%26view=show%26showlist_id=1%26format=showlist&amp;language=" /></object></div><div class="jsnis-alternative"><div><p><a href="http://www.joomlashine.com/" class="jsnis-hd">Joomla templates and Joomla extensions from JoomlaShine.com</a></p></div><div><p>In order to view this page you need Flash Player 9+ support!</p><p><a href="http://www.adobe.com/go/getflashplayer">Get Adobe Flash player</a></p></div></div></div></div>
+			</div>
+		</div>
+		<div class="jsn-bottom"><div class="jsn-bottom_inner"></div></div>
+	</div>
+
+					</div>
+			</div>
+				<div id="jsn-content">
+			<div id="jsn-content_inner"><div id="jsn-content_inner1"><div id="jsn-content_inner2"><div id="jsn-content_inner3"><div id="jsn-content_inner4"><div id="jsn-content_inner5"><div id="jsn-content_inner6"><div id="jsn-content_inner7">
+			<div id="jsn-maincontent">
+				<div id="jsn-pcentercol">
+					<div id="jsn-pcentercol_inner">
+																									<div id="jsn-mainbody">
+								
+								<div class="com-content ">
+<div class="article">
+	<h2 class="contentheading">
+			<a href="/vyuka/bdak/23-huffman" class="contentpagetitle">Huffmanův kód - zadání a řešení</a>
+		</h2>
+	<div class="jsn-article-toolbar">
+				<div class="jsn-article-info">
+									<p class="createdate">
+				Pátek, 25 Únor 2011 15:26			</p>
+					</div>
+					</div>
+	<div class="jsn-article-content">
+		<p><H3>Zadání číslo:877
+</H3><br />Vektor pravděpodobností: p=[0.22 0.11 0.06 0.01 0.13 0.47]
+<br /><BR><H3>Řešení</H3><br />Entropie zdroje je:2.0354 Sh/symbol
+<br />Redundance zdroje je:0.21259
+<br />Kód:
+<br />10   
+<br />1111 
+<br />11101
+<br />11100
+<br />110  
+<br />0    
+<br />Entropie přizpůsobeného zdroje je:0.97389 Sh/symbol
+<br />Redundance přizpůsobeného zdroje je:0.026109
+<br /></p>			<p class="modifydate">
+			Aktualizováno Neděle, 27 Únor 2011 12:16		</p>
+		</div>
+	<span class="article_separator">&nbsp;</span>
+</div>
+</div>
+							</div>
+																	</div>
+				</div>
+												<div class="clearbreak"></div>
+			</div>
+									<div class="clearbreak"></div>
+			</div></div></div></div></div></div></div></div>
+		</div>
+	</div>
+	</div>
+<div id="jsn-copyright"><a href="http://www.joomlashine.com">Free Joomla Templates by JoomlaShine.com</a></div>
+</body>
+</html>
