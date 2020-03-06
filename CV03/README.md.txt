@@ -43,6 +43,13 @@ f = mod(p*G,2)
 
 %s = 'f'"*"H`
 
-
+%Opravy chyb motocí tabulky
+%genrovani tabulky
+% help syndtable
 
 ```
+
+V dekodovaném zahodím zabezpeèovací bity, viz papír.
+
+
+Oprava 1 chyby je podle matice H
