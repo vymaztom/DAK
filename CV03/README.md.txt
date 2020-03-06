@@ -47,6 +47,28 @@ f = mod(p*G,2)
 %genrovani tabulky
 % help syndtable
 
+G=[eye(4) [1 0 1;0 1 1;1 1 1;1 1 0]]
+[k,N] = size(G)
+Ht=[G(:,k+1:N);eye(N-k)]
+fp1 = [1 1 0 1 1 1 0]
+fp2 = [1 1 1 0 1 0 1]
+fp3 = [1 0 0 1 0 1 1]
+
+mod(fp1*Ht,2)
+mod(fp2*Ht,2)
+mod(fp3*Ht,2)
+
+
+syndtable(Ht')
+
+% syndtable NOTE error code 's' by number of row in syndtable
+% 0 0 0
+% 0 0 1
+% 0 1 0
+% 0 1 1
+% 1 0 0
+% ++
+
 ```
 
 V dekodovaném zahodím zabezpeèovací bity, viz papír.
